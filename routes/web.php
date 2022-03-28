@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\MakeUrlController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,14 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/makeurl', [MakeUrlController::class, 'index'])
+    ->name('makeurl.index');
+
+Route::get('/makeurl/{makeurl:title}', [MakeUrlController::class, 'show'])
+    ->name('makeurl.show');
+
 
 Route::get('/project/{project:title}', [ProjectController::class, 'show'])
     ->name('project.show')
