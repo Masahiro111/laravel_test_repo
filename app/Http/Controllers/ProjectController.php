@@ -9,6 +9,8 @@ class ProjectController extends Controller
 {
     public function show(Project $project)
     {
-        return 'show';
+        // dd($project);
+        // return 'show';
+        echo route('project.show', ['project' => $project]);
     }
 }

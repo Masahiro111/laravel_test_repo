@@ -24,6 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/project/{project:title}', [ProjectController::class, 'show'])
+    ->name('project.show')
     ->missing(fn ($request) => response()->view('errors.project-not-found'));
 
 Route::controller(HelloController::class)
