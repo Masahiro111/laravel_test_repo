@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\MakeUrlController;
 use App\Http\Controllers\ProjectController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::prefix('article')
+    ->controller(ArticleController::class)
+    ->group(function () {
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+    });
 
 Route::get('/makeurl', [MakeUrlController::class, 'index'])
     ->name('makeurl.index');
