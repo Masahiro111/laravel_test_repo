@@ -27,11 +27,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::prefix('article')
+    ->middleware(['auth'])
     ->controller(ArticleController::class)
+    ->name('article.')
     ->group(function () {
-        Route::get('/', 'index');
-        Route::get('/create', 'create');
-        Route::post('/', 'store');
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
     });
 
 Route::get('/makeurl', [MakeUrlController::class, 'index'])

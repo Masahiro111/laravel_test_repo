@@ -14,11 +14,29 @@
         <form action="{{ route('hello.store') }}" method="POST">
             @csrf
             @method('POST')
-            <input type="text" name="title" class="border @error('title') border-red-500 @else  border-blue-500 @enderror">
-            <button type="submit" class="text-white bg-blue-700">submit</button>
-            @error('title')
-            {{ $message }}
-            @enderror
+            <p class="mb-4">
+                <input type="text" name="title" class="border @error('title') border-red-500 @else  border-blue-500 @enderror">
+                @error('title')
+                <span>{{ $message }}</span>
+                @enderror
+            </p>
+
+            <p class="mb-4">
+                <input type="text" name="content" class="border @error('title') border-red-500 @else  border-blue-500 @enderror">
+                @error('content')
+                {{ $message }}
+                @enderror
+            </p>
+
+            <p class="mb-4">
+                <input type="text" name="extra" class="border @error('title') border-red-500 @else  border-blue-500 @enderror">
+                @error('extra')
+                {{ $message }}
+                @enderror
+            </p>
+
+            <p><button type="submit" class="text-white bg-blue-700">submit</button></p>
+
         </form>
 
 
