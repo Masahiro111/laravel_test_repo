@@ -11,9 +11,9 @@
 
     <body>
         create page
-        <form action="{{ route('article.store') }}" method="POST">
+        <form action="{{ route('article.update', ['article' => $article]) }}" method="POST">
             @csrf
-            @method('POST')
+            @method('PUT')
 
             <p class="mb-4">
                 <input
@@ -48,7 +48,7 @@
                 @enderror
             </p>
 
-            <p><button type="submit" class="text-white bg-blue-700">submit</button></p>
+            <p><button type="submit" class="text-white bg-blue-700">update</button></p>
 
         </form>
 

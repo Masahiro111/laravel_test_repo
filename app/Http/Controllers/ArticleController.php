@@ -36,11 +36,11 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        dd($request->validated());
+        // dd($request->validated());
 
         auth()->user()->articles()->create($request->validated());
 
-        return redirect()->route('article.create');
+        return redirect()->route('article.index');
     }
 
     /**
@@ -62,7 +62,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -72,9 +72,8 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(StoreArticleRequest $request, Article $article)
     {
-        //
     }
 
     /**

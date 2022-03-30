@@ -34,6 +34,8 @@ Route::prefix('article')
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
+        Route::get('/{article}/edit', 'edit')->name('edit');
+        Route::put('/{article}', 'update')->name('update');
     });
 
 Route::get('/makeurl', [MakeUrlController::class, 'index'])
