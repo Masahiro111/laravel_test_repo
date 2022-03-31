@@ -38,9 +38,14 @@ class ArticleController extends Controller
     {
         // dd($request->validated());
 
-        auth()->user()->articles()->create($request->validated());
+        auth()
+            ->user()
+            ->articles()
+            ->create($request->validated());
 
-        return redirect()->route('article.index');
+        return redirect()
+            ->route('article.index')
+            ->with('success', 'success create');
     }
 
     /**
@@ -74,6 +79,14 @@ class ArticleController extends Controller
      */
     public function update(StoreArticleRequest $request, Article $article)
     {
+        auth()
+            ->user()
+            ->articles()
+            ->update($request->validated());
+
+        redirect()
+            ->route('article.index')
+            ->with('success', 'success update');
     }
 
     /**
